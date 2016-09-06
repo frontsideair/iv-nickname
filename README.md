@@ -1,17 +1,19 @@
 # IV Nickname for Pokemon GO
 Change nicknames of all your Pokemon to their respective IVs
 
+![screenshot](/screenshot.png?raw=true)
+
 # Usage
 ```
 Format: (total:stamina.attack.defense)
 
 Options:
   -m, --method   Can be `google` or `ptc`                                                 [required]  [default: "google"]
-  -u, --user     Username (command line argument or PG_USER)                            
-  -p, --pass     Password (command line argument or PG_PASS)                            
+  -u, --user     Username (command line argument or PG_USER)
+  -p, --pass     Password (command line argument or PG_PASS)
   -f, --fave     Pokemon with total IV over this number will be favorited. 0 to disable.  [default: 0]
-  -d, --display  Don't change anything, only display Pokemon info.                      
-  -r, --reset    Reset all nicknames.                                                   
+  -d, --display  Don't change anything, only display Pokemon info.
+  -r, --reset    Reset all nicknames.
 ```
 
 # Roadmap
