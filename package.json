@@ -1,0 +1,15 @@
+{
+  "name": "iv-nickname",
+  "version": "0.1.0",
+  "description": "Automatically nickname all your Pokemon to their respective IVs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Fatih Altinok",
+  "license": "ISC",
+  "devDependencies": {
+    "optimist": "^0.6.1",
+    "pogobuf": "^1.7.0"
+  }
+}
