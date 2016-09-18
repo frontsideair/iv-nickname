@@ -3,6 +3,12 @@ Change nicknames of all your Pokemon to their respective IVs
 
 ![screenshot](/screenshot.png?raw=true)
 
+# Set up
+
+1. Requires NPM.
+2. Install dependencies with `npm install`.
+3. Run the script with `node index.js` with parameters outlined below.
+
 # Usage
 ```
 Format: (total:stamina.attack.defense)
