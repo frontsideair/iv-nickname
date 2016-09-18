@@ -5,7 +5,7 @@ Change nicknames of all your Pokemon to their respective IVs
 
 # Set up
 
-1. Requires NPM.
+1. Requires npm.
 2. Install dependencies with `npm install`.
 3. Run the script with `node index.js` with parameters outlined below.
 
