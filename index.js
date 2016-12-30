@@ -14,6 +14,7 @@ const argv = optimist
     .alias('f', 'fave')
     .alias('d', 'display')
     .alias('r', 'reset')
+    .alias('o', 'override')
     .describe('m', 'Can be `google` or `ptc`')
     .describe('u', 'Username (command line argument or PG_USER)')
     .describe('p', 'Password (command line argument or PG_PASS)')
@@ -21,6 +22,7 @@ const argv = optimist
     .describe('f', 'Pokemon with total IV over this number will be favorited. 0 to disable.')
     .describe('d', 'Don\'t change anything, only display Pokemon info.')
     .describe('r', 'Reset all nicknames.')
+    .describe('o', 'Override existing nickname.')
     .default('m', 'google')
     .default('c', '.env')
     .default('f', 0)
@@ -99,8 +101,9 @@ else {
       pokemon.forEach(poke => {
         const IVnickname = pad2(poke.iv.total) + ':' + pad2(poke.iv.stamina) + '.' + pad2(poke.iv.attack) + '.' + pad2(poke.iv.defense)
         const nickname = argv.reset ? '' : IVnickname
+        const shouldOverride = argv.override || poke.nickname === ''
 
-        if (poke.nickname !== nickname) {
+        if (shouldOverride && poke.nickname !== nickname) {
           client.nicknamePokemon(poke.uuid, nickname)
         }
 
