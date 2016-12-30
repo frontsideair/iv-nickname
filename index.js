@@ -4,28 +4,34 @@ const optimist = require('optimist')
 const MOVES = require('./moves')
 const POKEMON = require('./pokemon')
 
-const { PROVIDER, PG_USER, PG_PASS } = process.env
-
 const argv = optimist
     .usage('Change nicknames of all your Pokemon to their respective IVs.\nFormat: (total:stamina.attack.defense)')
     .demand('m', 'u', 'p', 'f')
     .alias('m', 'method')
     .alias('u', 'user')
     .alias('p', 'pass')
+    .alias('c', 'creds')
     .alias('f', 'fave')
     .alias('d', 'display')
     .alias('r', 'reset')
     .describe('m', 'Can be `google` or `ptc`')
     .describe('u', 'Username (command line argument or PG_USER)')
     .describe('p', 'Password (command line argument or PG_PASS)')
+    .describe('c', 'Path to creds. (Format: PG_USER=username\\nPG_PASS=password)')
     .describe('f', 'Pokemon with total IV over this number will be favorited. 0 to disable.')
     .describe('d', 'Don\'t change anything, only display Pokemon info.')
     .describe('r', 'Reset all nicknames.')
     .default('m', 'google')
-    .default('u', PG_USER)
-    .default('p', PG_PASS)
+    .default('c', '.env')
     .default('f', 0)
     .argv
+
+require('dotenv').config({ path: argv.creds })
+
+const { PROVIDER, PG_USER, PG_PASS } = process.env
+
+const user = argv.user || PG_USER
+const pass = argv.pass || PG_PASS
 
 function pad2 (num) {
   return (num < 10 ? '0' : '') + num
@@ -34,11 +40,11 @@ function pad2 (num) {
 const client = new Client()
 const provider = argv.method === 'google' ? new GoogleLogin() : new PTCLogin()
 
-if (!argv.user || !argv.pass) {
+if (!user || !pass) {
   optimist.showHelp()
 }
 else {
-  const promise = provider.login(argv.user, argv.pass)
+  const promise = provider.login(user, pass)
     .then(token => {
       client.setAuthInfo(argv.method, token)
 
