@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const { PTCLogin, GoogleLogin, Client, Utils: { splitInventory, getIVsFromPokemon } } = require('pogobuf')
 const optimist = require('optimist')
 
