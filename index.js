@@ -72,10 +72,6 @@ else {
             name: details.name,
             nickname: poke.nickname,
             cp: poke.cp,
-            moves: [
-              { name: move_1.name, dps: move_1.dps },
-              { name: move_2.name, dps: move_2.dps, charge: move_2.charge }
-            ],
             iv: {
               total: ivs.stam + ivs.att + ivs.def,
               stamina: ivs.stam,
