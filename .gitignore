@@ -38,3 +38,7 @@ jspm_packages
 
 # dotenv
 .env
+
+# eclipse files
+.project
+.settings
