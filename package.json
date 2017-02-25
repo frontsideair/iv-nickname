@@ -1,6 +1,6 @@
 {
   "name": "iv-nickname",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Automatically nickname all your Pokemon to their respective IVs",
   "main": "index.js",
   "scripts": {
