@@ -11,6 +11,6 @@
   "dependencies": {
     "dotenv": "^2.0.0",
     "optimist": "^0.6.1",
-    "pogobuf": "^1.7.0"
+    "pogobuf": "pogosandbox/pogobuf#0.57.2"
   }
 }
