@@ -2,4 +2,4 @@
 
 const changeNicknames = require('./changeNicknames')
 
-changeNicknames()
+changeNicknames('google', process.env.USER, process.env.PASS)

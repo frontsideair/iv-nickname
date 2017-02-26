@@ -22,9 +22,9 @@ async function getPokemon (client) {
   return Utils.splitInventory(inventory).pokemon.filter(p => p.is_egg === false)
 }
 
-async function changeNicknames () {
+async function changeNicknames (method, user, pass) {
   const client = new Client()
-  const token = await new GoogleLogin().login(process.env.USER, process.env.PASS)
+  const token = await new GoogleLogin().login(user, pass)
   client.setAuthInfo('google', token)
   await client.init()
   const pokemon = await getPokemon(client)
