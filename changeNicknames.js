@@ -20,9 +20,9 @@ function pad2 (string) {
 function truncateDecimals (number, digits) {
 	var multiplier = Math.pow(10, digits),
 	adjustedNum = number * multiplier,
-	truncatedNum = Math[adjustedNum < 0 ? 'ceil' : 'floor'](adjustedNum);
+	truncatedNum = Math[adjustedNum < 0 ? 'ceil' : 'floor'](adjustedNum)
 	
-	return truncatedNum / multiplier;
+	return truncatedNum / multiplier
 }
 
 async function getPokemon (client) {
@@ -42,7 +42,7 @@ async function changeNicknames (method, user, pass, mode) {
   for(var i = 0; i < pokemon.length; i++) {
   	for(var j = 0; j < names.length; j++) {
   		if (pokemon[i].pokemon_id == names[j].id) {
-  			pokemon[i].name = names[j].name;
+  			pokemon[i].name = names[j].name
 			}
   	}
   }
