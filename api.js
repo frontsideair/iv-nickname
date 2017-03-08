@@ -1,33 +1,23 @@
 const { GoogleLogin, Client, Utils } = require('pogobuf')
 const names = require('./pokemon')
-
-async function delay (duration) {
-  return new Promise((resolve, reject) => {
-    setTimeout(resolve, duration * 1000)
-  })
-}
-
-function random ({ from = 0, to = 10, round = true, inclusive = round ? true : false } = {}) {
-  const range = to - from + (inclusive ? 1 : 0)
-  const number = Math.random() * range + from
-  return round ? Math.floor(number) : number
-}
-
-function pad2 (string) {
-  return (string < 10 ? '0' : '') + string
-}
+const { pad2, random, delay } = require('./utils')
 
 async function getPokemon (client) {
   const inventory = await client.getInventory(0)
   return Utils.splitInventory(inventory).pokemon.filter(p => p.is_egg === false)
 }
 
-async function changeNicknames (method, user, pass) {
+async function login (method, user, pass) {
   const client = new Client()
   const token = await new GoogleLogin().login(user, pass)
   client.setAuthInfo('google', token)
   await client.init()
+  return client
+}
+
+async function changeNicknames (client) {
   const pokemon = await getPokemon(client)
+
   let counter = 0
 
   for (const p of pokemon) {
@@ -55,4 +45,7 @@ async function changeNicknames (method, user, pass) {
   console.log(`All ${counter} operations complete!`)
 }
 
-module.exports = changeNicknames
+module.exports = {
+  login,
+  changeNicknames,
+}

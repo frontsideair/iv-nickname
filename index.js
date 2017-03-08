@@ -1,5 +1,14 @@
 #!/usr/bin/env node
 
-const changeNicknames = require('./changeNicknames')
+const { login, changeNicknames } = require('./api')
 
-changeNicknames('google', process.env.USER, process.env.PASS)
+async function main () {
+  try {
+    const client = await login('google', process.env.USER, process.env.PASS)
+    await changeNicknames(client)
+  } catch (e) {
+    console.error(e.name + ': ' + e.message)
+  }
+}
+
+main()
