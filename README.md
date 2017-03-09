@@ -20,5 +20,5 @@ Change nicknames of all your Pokemon to their respective IVs
 
 # Credits
 
-* Pokemon list by [sysopmatt](https://github.com/sysopmatt)
+* Pokemon list by [Sebastián Barrenechea](https://github.com/SebastianBar)
 * [pogobuf](https://github.com/cyraxx/pogobuf) library by [Andreas Reich](https://github.com/cyraxx)
