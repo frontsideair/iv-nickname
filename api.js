@@ -1,16 +1,26 @@
 const { GoogleLogin, Client, Utils } = require('pogobuf')
 const names = require('./pokemon')
 const { pad2, random, delay } = require('./utils')
+require('isomorphic-fetch')
 
 async function getPokemon (client) {
   const inventory = await client.getInventory(0)
   return Utils.splitInventory(inventory).pokemon.filter(p => p.is_egg === false)
 }
 
+async function getLocation () {
+  const response = await fetch('https://freegeoip.net/json/')
+  return await response.json()
+}
+
 async function login (method, user, pass) {
   const client = new Client()
   const token = await new GoogleLogin().login(user, pass)
   client.setAuthInfo('google', token)
+  
+  const { latitude, longitude } = await getLocation()
+  client.setPosition(latitude, longitude)
+
   await client.init()
   return client
 }
